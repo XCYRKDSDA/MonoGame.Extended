@@ -36,7 +36,8 @@ namespace MonoGame.Extended.ViewportAdapters
         {
             var scaleMatrix = GetScaleMatrix();
             var invertedMatrix = Matrix.Invert(scaleMatrix);
-            return Vector2.Transform(new Vector2(x, y), invertedMatrix).ToPoint();
+            var result = Vector2.Transform(new Vector2(x, y), invertedMatrix);
+            return new Point((int)result.X, (int)result.Y);
         }
 
         public virtual void Reset()
